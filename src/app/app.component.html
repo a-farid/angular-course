@@ -1,7 +1,11 @@
 <div class="p-3 bg-yellow-100">
   <h1 class="text-red-800 p-3 font-bold">Hello world</h1>
-  <h2>The name is {{ name }}, cames from {{ childId }}</h2>
-  <app-filter [categories]="categories"></app-filter>
+  <h2>Category selected is: {{ categorieSelected }}</h2>
+  <app-filter
+    [categories]="categories"
+    [categorieSelected]="categorieSelected"
+    (categorieUpdated)="recieveCategory($event)"
+  ></app-filter>
   <div class="flex gap-3">
     <h1>The count is {{ number }}</h1>
     <button
