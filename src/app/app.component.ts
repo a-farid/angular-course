@@ -131,6 +131,7 @@ export class AppComponent {
     },
   ];
   categories!: string[];
+  categorieSelected: string = 'All';
 
   constructor() {
     this.getCategories();
@@ -150,9 +151,11 @@ export class AppComponent {
   childId: number = 0;
   fruits: string[] = ['Apple', 'Banana', 'Orange'];
   receiveData(data: { id: number; content: string }) {
-    console.log(data);
     this.name = data.content;
     this.childId = data.id;
+  }
+  recieveCategory(data: string) {
+    this.categorieSelected = data;
   }
   numberPlus() {
     this.number++;

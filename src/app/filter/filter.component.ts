@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { CommonModule } from '@angular/common';
 @Component({
@@ -10,4 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class FilterComponent {
   @Input() categories!: string[];
+  @Output() categorieSelected = new EventEmitter<'All'>();
+
+  updateCategory(data: string) {
+    this.categorieSelected.emit();
+    this.categorieSelected.emit(this.category);
+  }
 }

@@ -1,5 +1,10 @@
 <mat-radio-group>
-  <mat-radio-button value="1" *ngFor="let categorie of categories" class="mx-2">
+  <mat-radio-button
+    value="{{ categorie }}"
+    *ngFor="let categorie of categories"
+    class="mx-2"
+    (change)="sendData()"
+  >
     {{ categorie }}</mat-radio-button
   >
 </mat-radio-group>
