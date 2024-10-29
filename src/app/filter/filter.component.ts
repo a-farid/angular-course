@@ -10,9 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class FilterComponent {
   @Input() categories!: string[];
-  @Input() categorieSelected!: string;
+  @Input() selectedCategory!: string;
+  @Output() sendCategory = new EventEmitter<string>(); // Output event added in the component tag
 
-  @Output() sendCategory = new EventEmitter();
-
-  onChangeCategory() {}
+  onChangeCategory(data: any) {
+    this.sendCategory.emit(data);
+  }
 }

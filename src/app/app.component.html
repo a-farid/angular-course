@@ -1,26 +1,12 @@
 <div class="p-3 bg-yellow-100">
   <h1 class="text-red-800 p-3 font-bold">Hello world</h1>
-  <h2>Category selected is: {{ categorieSelected }}</h2>
+  <h2>Category selected is: {{ selectedCategory }}</h2>
   <app-filter
     [categories]="categories"
-    [categorieSelected]="categorieSelected"
-    (categorieUpdated)="recieveCategory($event)"
+    [selectedCategory]="selectedCategory"
+    (sendCategory)="onCategorySelected($event)"
   ></app-filter>
-  <div class="flex gap-3">
-    <h1>The count is {{ number }}</h1>
-    <button
-      (click)="numberMinus()"
-      class="text-blue-800 font-extrabold border rounded-md w-5 bg-red-100 hover:bg-slate-300"
-    >
-      -
-    </button>
-    <button
-      (click)="numberPlus()"
-      class="text-blue-800 font-extrabold border rounded-md w-5 bg-red-100 hover:bg-slate-300"
-    >
-      +
-    </button>
-  </div>
+  <div class="flex gap-3"></div>
 </div>
 <ul
   class="border-4 rounded-md p-3 bg-slate-100 mt-3 flex flex-wrap gap-2 items-start justify-center"
@@ -28,6 +14,6 @@
   <app-product
     *ngFor="let product of products"
     [product]="product"
-    (nameSent)="receiveData($event)"
+    [selectedCategory]="selectedCategory"
   />
 </ul>

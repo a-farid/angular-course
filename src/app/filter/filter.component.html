@@ -2,7 +2,7 @@
   <mat-radio-button
     value="{{ categorie }}"
     name="categorySelected"
-    [checked]="categorie == categorieSelected"
+    [checked]="categorie == selectedCategory"
     *ngFor="let categorie of categories"
     class="mx-2"
     (change)="onChangeCategory(categorie)"

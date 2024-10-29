@@ -1,4 +1,7 @@
-<div class="rounded-md border-2 w-[250px] p-2">
+<div
+  class="rounded-md border-2 w-[250px] p-2"
+  [hidden]="selectedCategory != 'All' && selectedCategory != product.category"
+>
   <h1><b>Title:</b> {{ product.name }}</h1>
   <h2
     class="font-bold"
@@ -8,16 +11,4 @@
   </h2>
   <h2 class="font-bold">Price: {{ product.price }}$</h2>
   <h2 class="font-bold text-gray-500">{{ product.description }}</h2>
-  <input
-    type="text"
-    (input)="updateName($event)"
-    class="px-2 py-1 rounded-md border-2 border-yellow-600 w-full mt-3"
-  />
-  <button
-    (click)="sendData()"
-    class="border-yellow-600 border-y-2 border-x-2 p-2 bg-slate-500 text-white hover:bg-slate-400 mt-3 rounded-lg"
-  >
-    Send data to parent
-  </button>
-  <p>Name: {{ name }}</p>
 </div>
