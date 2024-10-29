@@ -16,23 +16,13 @@ export class AppComponent implements OnInit {
   products: IProduct[] = productsList;
   displayedProducts: IProduct[] = [];
   categories: string[] = [];
-  selectedCategory: string = 'All';
+  filter: any = {
+    category: 'All',
+    stock: 'All',
+  };
 
   ngOnInit() {
     this.getCategories();
-    this.filterProducts();
-    this.selectedCategory;
-  }
-  set selectedCategoryChanged(value: string) {
-    this.selectedCategory = value;
-    this.filterProducts();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['selectedCategory']) {
-      // Update the message based on the counter value
-      this.filterProducts();
-    }
   }
 
   getCategories() {
@@ -43,18 +33,6 @@ export class AppComponent implements OnInit {
   }
 
   onCategorySelected(category: string) {
-    this.selectedCategory = category;
-    this.filterProducts();
-  }
-
-  filterProducts() {
-    if (this.selectedCategory === 'All') {
-      this.displayedProducts = this.products;
-    } else {
-      this.displayedProducts = this.products.filter(
-        (product) => product.category === this.selectedCategory
-      );
-    }
-    console.log('Filtered products: ', this.displayedProducts);
+    this.filter.categories = category;
   }
 }
