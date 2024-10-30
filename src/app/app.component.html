@@ -1,19 +1,14 @@
 <div class="p-3 bg-yellow-100">
   <h1 class="text-red-800 p-3 font-bold">Hello world</h1>
-  <h2>Category selected is: {{ selectedCategory }}</h2>
+  <h2>Category selected is: {{ filter.category }}</h2>
+  <h2>Stock selected is: {{ filter.stock }}</h2>
   <app-filter
     [categories]="categories"
-    [selectedCategory]="selectedCategory"
+    [filter]="filter"
     (sendCategory)="onCategorySelected($event)"
+    (sendStock)="onStockSelected($event)"
   ></app-filter>
   <div class="flex gap-3"></div>
 </div>
-<ul
-  class="border-4 rounded-md p-3 bg-slate-100 mt-3 flex flex-wrap gap-2 items-start justify-center"
->
-  <app-product
-    *ngFor="let product of products"
-    [product]="product"
-    [selectedCategory]="selectedCategory"
-  />
-</ul>
+
+  <app-product [products]="products" [filter]="filter" />

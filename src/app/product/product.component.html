@@ -1,14 +1,19 @@
-<div
-  class="rounded-md border-2 w-[250px] p-2"
-  [hidden]="selectedCategory != 'All' && selectedCategory != product.category"
+<ul
+  class="border-4 rounded-md p-3 bg-slate-100 mt-3 flex flex-wrap gap-2 items-start justify-center"
 >
-  <h1><b>Title:</b> {{ product.name }}</h1>
-  <h2
-    class="font-bold"
-    [ngClass]="product.inStock ? 'text-green-600' : 'text-red-600'"
+  <li
+    *ngFor="let product of filtredProducts()"
+    class="rounded-md border-2 w-[250px] p-2"
   >
-    {{ product.inStock ? "In stock" : "Out of stock" }}
-  </h2>
-  <h2 class="font-bold">Price: {{ product.price }}$</h2>
-  <h2 class="font-bold text-gray-500">{{ product.description }}</h2>
-</div>
+    <h1><b>Title:</b> {{ product.name }}</h1>
+    <h2
+      class="font-bold"
+      [ngClass]="product.inStock ? 'text-green-600' : 'text-red-600'"
+    >
+      {{ product.inStock ? "In stock" : "Out of stock" }}
+    </h2>
+    <h2 class="font-bold">Price: {{ product.price }}$</h2>
+    <h2 class="font-bold">Category: {{ product.category }}</h2>
+    <h2 class="font-bold text-gray-500">{{ product.description }}</h2>
+  </li>
+</ul>

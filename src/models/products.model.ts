@@ -6,6 +6,10 @@ export interface IProduct {
   category: string;
   inStock: boolean;
 }
+export interface IFilters {
+  category: string;
+  stock: string | boolean;
+}
 
 export const productsList: IProduct[] = [
   {
