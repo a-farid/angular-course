@@ -1,14 +1,17 @@
 <div class="p-3 bg-yellow-100">
-  <h1 class="text-red-800 p-3 font-bold">Hello world</h1>
-  <h2>Category selected is: {{ filter.category }}</h2>
-  <h2>Stock selected is: {{ filter.stock }}</h2>
-  <app-filter
-    [categories]="categories"
-    [filter]="filter"
-    (sendCategory)="onCategorySelected($event)"
-    (sendStock)="onStockSelected($event)"
-  ></app-filter>
-  <div class="flex gap-3"></div>
-</div>
 
-  <app-product [products]="products" [filter]="filter" />
+  <p>
+    The category selected is: {{ filter.category }}, stock: {{ filter.stock }}
+  </p>
+  <div class="flex gap-3"></div>
+  <app-user></app-user>
+</div>
+<router-outlet></router-outlet>
+
+<app-filter
+  (categoryChange)="onCategorySelected($event)"
+  (stockChange)="onStockSelected($event)"
+  [categories]="categories"
+  class="my-3 py-3"
+></app-filter>
+<app-product [displayedProducts]="displayedProducts"></app-product>

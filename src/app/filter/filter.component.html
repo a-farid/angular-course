@@ -1,26 +1,29 @@
+<select (change)="onCategoryChange($event)" class="m-3">
+  <option *ngFor="let category of categories" [value]="category">
+    {{ category }}
+  </option>
+</select>
+<select (change)="onStockChange($event)" class="m-3">
+  <option
+    *ngFor="let category of ['All', 'In stock', 'Out of stock']"
+    [value]="category"
+  >
+    {{ category }}
+  </option>
+</select>
+<mat-form-field>
+  <mat-select placeholder="Categories">
+    <mat-option *ngFor="let cat of categories" [value]="cat">
+      {{ cat }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 <mat-radio-group>
   <mat-radio-button
-    value="{{ categorie }}"
-    name="categorySelected"
-    [checked]="categorie == filter.category"
-    *ngFor="let categorie of categories"
-    class="mx-2"
-    (change)="onChangeCategory(categorie)"
-  >
-    {{ categorie }}</mat-radio-button
+    value="category"
+    
+    *ngFor="let category of ['All', 'In stock', 'Out of stock']"
+    >{{ category }}</mat-radio-button
   >
 </mat-radio-group>
-<div>
-  <mat-radio-group>
-    <mat-radio-button
-      *ngFor="let stock of ['All', 'In stock', 'Out of stock']"
-      value="{{ stock }}"
-      name="categorySelected"
-      [checked]="stock == filter.stock"
-      class="mx-2"
-      (change)="onChangeStock(stock)"
-    >
-      {{ stock }}</mat-radio-button
-    >
-  </mat-radio-group>
-</div>

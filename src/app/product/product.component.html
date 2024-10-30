@@ -2,15 +2,17 @@
   class="border-4 rounded-md p-3 bg-slate-200 mt-3 flex flex-wrap gap-2 items-start justify-center"
 >
   <li
-    *ngFor="let product of filtredProducts()"
+    *ngFor="let product of displayedProducts"
     class="rounded-md border-2 w-[250px] p-2"
   >
     <h1><b>Title:</b> {{ product.name }}</h1>
     <h2
       class="font-bold"
-      [ngClass]="product.inStock ? 'text-green-600' : 'text-red-600'"
+      [ngClass]="
+        product.stock == 'In stock' ? 'text-green-600' : 'text-red-600'
+      "
     >
-      {{ product.inStock ? "In stock" : "Out of stock" }}
+      {{ product.stock }}
     </h2>
     <h2 class="font-bold">Price: {{ product.price }}$</h2>
     <h2 class="font-bold">Category: {{ product.category }}</h2>
