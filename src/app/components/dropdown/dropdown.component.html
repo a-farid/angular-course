@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <summary class="btn m-1" role="button" tabindex="0">States available</summary>
+  <ul
+    tabindex="0"
+    class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+  >
+    @for (item of items; track $index) {
+
+    <li (click)="updateSelectedItem(item)">
+      <a>{{ item }}</a>
+    </li>
+    }
+  </ul>
+</div>

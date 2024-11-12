@@ -2,10 +2,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ProductComponent } from './product/product.component';
-import { FilterComponent } from './filter/filter.component';
-import { IProduct, productsList, IFilters } from '../models/products.model';
-import { UserComponent } from './user/user.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { icons, LucideModule } from '../models/icons';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @Component({
   selector: 'app-root',
@@ -13,57 +14,21 @@ import { UserComponent } from './user/user.component';
   imports: [
     RouterOutlet,
     CommonModule,
-    ProductComponent,
-    FilterComponent,
-    UserComponent,
+    NavbarComponent,
+    FooterComponent,
+    FormsModule,
+    LucideModule,
+    DropdownComponent,
   ],
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
-  products: IProduct[] = productsList;
-  displayedProducts: IProduct[] = [];
-  categories: string[] = [];
-  filter: { category: string; stock: string } = {
-    category: 'All',
-    stock: 'All',
-  };
+  readonly icons = icons;
 
-  ngOnInit() {
-    this.getCategories();
-    this.filterProducts();
-  }
+  inputType: string = 'text';
+  name: string = 'tests';
+  selectedState: string = '';
+  states: string[] = ['California', 'Texas', 'Florida', 'New York'];
 
-  getCategories() {
-    this.categories = ['All', ...new Set(this.products.map((p) => p.category))];
-  }
-
-  onCategorySelected(category: string) {
-    this.filter.category = category;
-    this.filterProducts();
-  }
-  onStockSelected(stock: string) {
-    this.filter.stock = stock;
-    this.filterProducts();
-  }
-
-  filterProducts() {
-    if (this.filter.category === 'All' && this.filter.stock === 'All') {
-      this.displayedProducts = this.products;
-    } else if (this.filter.category === 'All') {
-      this.displayedProducts = this.products.filter((product: IProduct) => {
-        return product.stock === this.filter.stock;
-      });
-    } else if (this.filter.stock === 'All') {
-      this.displayedProducts = this.products.filter((product: IProduct) => {
-        return product.category === this.filter.category;
-      });
-    } else {
-      this.displayedProducts = this.products.filter((product: IProduct) => {
-        return (
-          product.category === this.filter.category &&
-          product.stock === this.filter.stock
-        );
-      });
-    }
-  }
+  ngOnInit() {}
 }

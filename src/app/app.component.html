@@ -1,17 +1,16 @@
-<div class="p-3 bg-yellow-100">
-
-  <p>
-    The category selected is: {{ filter.category }}, stock: {{ filter.stock }}
-  </p>
-  <div class="flex gap-3"></div>
-  <app-user></app-user>
+<div class="flex flex-col min-h-screen">
+  <app-navbar></app-navbar>
+  <div class="p-4 flex-grow">
+    <div>
+      <b>Selected state: {{ selectedState }}</b>
+    </div>
+    <app-dropdown
+      [items]="states"
+      (itemSelected)="selectedState = $event"
+    ></app-dropdown>
+    <lucide-icon [img]="icons.check" class="my-icon"></lucide-icon>
+    <lucide-icon [img]="icons.coffee"></lucide-icon>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
 </div>
-<router-outlet></router-outlet>
-
-<app-filter
-  (categoryChange)="onCategorySelected($event)"
-  (stockChange)="onStockSelected($event)"
-  [categories]="categories"
-  class="my-3 py-3"
-></app-filter>
-<app-product [displayedProducts]="displayedProducts"></app-product>
